@@ -12,10 +12,10 @@ module YamlDb
         @extension = helper.extension
       end
 
-      def dump(filename)
+      def dump(filename, table = nil)
         disable_logger
         File.open(filename, "w") do |file|
-          @dumper.dump(file)
+          @dumper.dump(file, table)
         end
         reenable_logger
       end
@@ -152,12 +152,23 @@ module YamlDb
 
       end
 
-      def self.dump(io)
-        tables.each do |table|
-          before_table(io, table)
-          dump_table(io, table)
-          after_table(io, table)
+      def self.dump(io, selected_tables=nil)
+        if selected_tables
+          selected_tables.each do |table|
+            dump_process(io, table)
+          end
+          return
         end
+        tables.each do |table|
+        dump_process(io, table)
+        end
+      end
+
+      def self.dump_process(io, table)
+        puts "Dump table: #{table}..."
+        before_table(io, table)
+        dump_table(io, table)
+        after_table(io, table)
       end
 
       def self.after_table(io, table)

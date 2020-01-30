@@ -26,8 +26,8 @@ RSpec.describe 'Rake tasks' do
     end
 
     it 'invokes the correct task' do
-      expect(YamlDb::RakeTasks).to receive(:data_dump_task).once.with(no_args)
-      subject.invoke
+      expect(YamlDb::RakeTasks).to receive(:data_dump_task).once#.with(Rake::TaskArguments.new(['table'], [["tname1", "tname2"]]))
+      subject.invoke(%w(tname1 tname2))
     end
   end
 
