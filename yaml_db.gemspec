@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir['README.md', 'lib/**/*']
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = ">= 1.8.7"
+  s.required_ruby_version = ">= 1.9.2"
 
   s.add_runtime_dependency "rails", ">= 3.0"
   s.add_runtime_dependency "rake", ">= 0.8.7"
