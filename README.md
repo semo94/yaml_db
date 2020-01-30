@@ -14,7 +14,7 @@ This gem supports Rails versions 3.0 through 5.2.
 
 Simply add to your Gemfile:
 
-    gem 'yaml_db'
+    gem 'yaml_db', :git => 'git://github.com/semo94/yaml_db.git'
 
 All rake tasks will then be available to you.
 
